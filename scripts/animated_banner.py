@@ -537,11 +537,36 @@ def scene_explain(a: str) -> str:
     return "".join(out)
 
 
+def scene_api(a: str) -> str:
+    """An HTTP request, its JSON response appearing line by line, and status badges.
+
+    The values are the real June 2025 row of sales-analytics-api at ShopFlow scale 10.
+    """
+    out = ['<rect x="850" y="44" width="380" height="272" rx="12" fill="#0d1117" stroke="#2a3542"/>',
+           f'<rect x="866" y="60" width="44" height="22" rx="6" fill="{a}"/>'
+           '<text x="888" y="76" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#0b1016">GET</text>',
+           '<text x="920" y="76" class="mono" font-size="12" fill="#e6edf3">/v1/sales/summary?group_by=month</text>',
+           '<line x1="866" y1="94" x2="1214" y2="94" stroke="#2a3542"/>']  # fmt: skip
+    body = ['{', '  "group_by": "month",', '  "rows": [', '    {"key": "2025-06",', '     "orders": 43156,',
+            '     "revenue_cents": 1352146201}', '  ],', '  "total_revenue_cents": ...', '}']  # fmt: skip
+    for i, line in enumerate(body):
+        out.append(f'<text x="870" y="{116 + i * 19}" class="mono fade d{min(i + 1, 9)}" font-size="12" xml:space="preserve" '
+                   f'fill="{"#8b949e" if line.strip() in "{}[]," or line.strip() == "]," else "#c9d1d9"}">'
+                   f"{escape(line)}</text>")  # fmt: skip
+    for i, (code, color) in enumerate(
+        (("200", "#3fb950"), ("304", a), ("400", "#d29922"), ("404", "#f85149"))
+    ):
+        out.append(f'<g class="fade d{i + 5}"><rect x="{1010 + i * 52}" y="284" width="46" height="22" rx="11" '
+                   f'fill="{color}" fill-opacity=".15" stroke="{color}"/><text x="{1033 + i * 52}" y="299" '
+                   f'text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="{color}">{code}</text></g>')  # fmt: skip
+    return "".join(out)
+
+
 SCENES = {
     "flow": scene_flow, "dashboard": scene_dashboard, "route": scene_route,
     "resume": scene_resume, "workflow": scene_workflow, "bi": scene_bi, "video": scene_video,
     "site": scene_site, "rows": scene_rows, "star": scene_star, "checks": scene_checks,
-    "terminal": scene_terminal, "days": scene_days, "cdc": scene_cdc, "lakehouse": scene_lakehouse, "explain": scene_explain,
+    "terminal": scene_terminal, "days": scene_days, "cdc": scene_cdc, "lakehouse": scene_lakehouse, "explain": scene_explain, "api": scene_api,
 }  # fmt: skip
 
 
