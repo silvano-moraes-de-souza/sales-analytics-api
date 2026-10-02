@@ -1,8 +1,11 @@
 services:
-  app:
+  api:
     build: .
-    env_file:
-      - path: .env
-        required: false
-    volumes:
-      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    environment:
+      SCALE: "0.02"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      retries: 60

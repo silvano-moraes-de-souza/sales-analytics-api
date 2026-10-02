@@ -7,6 +7,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 COPY --from=ghcr.io/astral-sh/uv:0.12 /uv /usr/local/bin/uv
 
+# git is needed to install mini-lakehouse and shopflow-datagen from their repositories.
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Dependencies first so code changes don't invalidate the layer.
@@ -20,5 +24,7 @@ RUN useradd --create-home --uid 1000 app && chown -R app /app
 USER app
 
 ENV PATH="/app/.venv/bin:$PATH"
+EXPOSE 8000
 
-CMD ["python", "-c", "import sales_analytics_api; print(sales_analytics_api.__version__)"]
+# Builds a small lakehouse on first start, then serves it.
+CMD ["sh", "-c", "test -d /tmp/lake/gold || sales-api seed --scale ${SCALE:-0.02} --lake /tmp/lake; exec sales-api serve --lake /tmp/lake --host 0.0.0.0 --port 8000"]

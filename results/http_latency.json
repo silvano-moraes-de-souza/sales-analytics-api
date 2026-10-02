@@ -1,0 +1,449 @@
+{
+  "name": "http_latency",
+  "created_at": "2026-10-02T15:41:46+00:00",
+  "git_sha": "e5839a0",
+  "machine": {
+    "os": "Windows 11",
+    "python": "3.11.15",
+    "cpu": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "cores_physical": 6,
+    "cores_logical": 12,
+    "cpu_max_mhz": 2688,
+    "ram_gb": 23.8
+  },
+  "notes": "ShopFlow scale 0.1 lakehouse. uvicorn, one process, on localhost; load from one thread per client with a keep-alive http.client connection, 8 s per case. Latency is measured at the client. wall_s holds the p50. Local disk, Python 3.11.15.",
+  "cases": [
+    {
+      "label": "summary by month (gold) \u00b7 1 clients",
+      "params": {
+        "endpoint": "summary by month (gold)",
+        "clients": 1
+      },
+      "runs": 1,
+      "wall_s": [
+        0.003883699973812327
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 2015,
+        "errors": 0,
+        "rps": 251.858,
+        "p50_ms": 3.884,
+        "p95_ms": 4.903,
+        "p99_ms": 5.55
+      },
+      "median_s": 0.003883699973812327,
+      "min_s": 0.003883699973812327,
+      "max_s": 0.003883699973812327,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "summary by month (gold) \u00b7 8 clients",
+      "params": {
+        "endpoint": "summary by month (gold)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.016404599999077618
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 3805,
+        "errors": 0,
+        "rps": 474.791,
+        "p50_ms": 16.405,
+        "p95_ms": 21.829,
+        "p99_ms": 28.444
+      },
+      "median_s": 0.016404599999077618,
+      "min_s": 0.016404599999077618,
+      "max_s": 0.016404599999077618,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "summary by month (gold) \u00b7 32 clients",
+      "params": {
+        "endpoint": "summary by month (gold)",
+        "clients": 32
+      },
+      "runs": 1,
+      "wall_s": [
+        0.06938960001571104
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 3605,
+        "errors": 0,
+        "rps": 448.988,
+        "p50_ms": 69.39,
+        "p95_ms": 92.088,
+        "p99_ms": 112.939
+      },
+      "median_s": 0.06938960001571104,
+      "min_s": 0.06938960001571104,
+      "max_s": 0.06938960001571104,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "daily sales page (gold) \u00b7 1 clients",
+      "params": {
+        "endpoint": "daily sales page (gold)",
+        "clients": 1
+      },
+      "runs": 1,
+      "wall_s": [
+        0.0034910999820567667
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 2196,
+        "errors": 0,
+        "rps": 274.465,
+        "p50_ms": 3.491,
+        "p95_ms": 5.361,
+        "p99_ms": 6.58
+      },
+      "median_s": 0.0034910999820567667,
+      "min_s": 0.0034910999820567667,
+      "max_s": 0.0034910999820567667,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "daily sales page (gold) \u00b7 8 clients",
+      "params": {
+        "endpoint": "daily sales page (gold)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.015981600008672103
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 3798,
+        "errors": 0,
+        "rps": 474.12,
+        "p50_ms": 15.982,
+        "p95_ms": 20.683,
+        "p99_ms": 44.39
+      },
+      "median_s": 0.015981600008672103,
+      "min_s": 0.015981600008672103,
+      "max_s": 0.015981600008672103,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "daily sales page (gold) \u00b7 32 clients",
+      "params": {
+        "endpoint": "daily sales page (gold)",
+        "clients": 32
+      },
+      "runs": 1,
+      "wall_s": [
+        0.07040829997276887
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 3476,
+        "errors": 0,
+        "rps": 432.223,
+        "p50_ms": 70.408,
+        "p95_ms": 104.91,
+        "p99_ms": 110.827
+      },
+      "median_s": 0.07040829997276887,
+      "min_s": 0.07040829997276887,
+      "max_s": 0.07040829997276887,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "top categories (gold) \u00b7 1 clients",
+      "params": {
+        "endpoint": "top categories (gold)",
+        "clients": 1
+      },
+      "runs": 1,
+      "wall_s": [
+        0.003131199977360666
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 2510,
+        "errors": 0,
+        "rps": 313.64,
+        "p50_ms": 3.131,
+        "p95_ms": 4.136,
+        "p99_ms": 5.027
+      },
+      "median_s": 0.003131199977360666,
+      "min_s": 0.003131199977360666,
+      "max_s": 0.003131199977360666,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "top categories (gold) \u00b7 8 clients",
+      "params": {
+        "endpoint": "top categories (gold)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.011095499998191372
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 5632,
+        "errors": 0,
+        "rps": 703.416,
+        "p50_ms": 11.095,
+        "p95_ms": 13.612,
+        "p99_ms": 16.026
+      },
+      "median_s": 0.011095499998191372,
+      "min_s": 0.011095499998191372,
+      "max_s": 0.011095499998191372,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "top categories (gold) \u00b7 32 clients",
+      "params": {
+        "endpoint": "top categories (gold)",
+        "clients": 32
+      },
+      "runs": 1,
+      "wall_s": [
+        0.04187929999898188
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 5670,
+        "errors": 0,
+        "rps": 706.823,
+        "p50_ms": 41.879,
+        "p95_ms": 74.032,
+        "p99_ms": 87.647
+      },
+      "median_s": 0.04187929999898188,
+      "min_s": 0.04187929999898188,
+      "max_s": 0.04187929999898188,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "customer orders (silver) \u00b7 1 clients",
+      "params": {
+        "endpoint": "customer orders (silver)",
+        "clients": 1
+      },
+      "runs": 1,
+      "wall_s": [
+        0.008612200006609783
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 889,
+        "errors": 0,
+        "rps": 111.12,
+        "p50_ms": 8.612,
+        "p95_ms": 11.081,
+        "p99_ms": 14.646
+      },
+      "median_s": 0.008612200006609783,
+      "min_s": 0.008612200006609783,
+      "max_s": 0.008612200006609783,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "customer orders (silver) \u00b7 8 clients",
+      "params": {
+        "endpoint": "customer orders (silver)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.032940000004600734
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 1795,
+        "errors": 0,
+        "rps": 223.691,
+        "p50_ms": 32.94,
+        "p95_ms": 58.144,
+        "p99_ms": 93.522
+      },
+      "median_s": 0.032940000004600734,
+      "min_s": 0.032940000004600734,
+      "max_s": 0.032940000004600734,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "customer orders (silver) \u00b7 32 clients",
+      "params": {
+        "endpoint": "customer orders (silver)",
+        "clients": 32
+      },
+      "runs": 1,
+      "wall_s": [
+        0.12022609999985434
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 2105,
+        "errors": 0,
+        "rps": 260.789,
+        "p50_ms": 120.226,
+        "p95_ms": 161.191,
+        "p99_ms": 193.691
+      },
+      "median_s": 0.12022609999985434,
+      "min_s": 0.12022609999985434,
+      "max_s": 0.12022609999985434,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "order detail (silver) \u00b7 1 clients",
+      "params": {
+        "endpoint": "order detail (silver)",
+        "clients": 1
+      },
+      "runs": 1,
+      "wall_s": [
+        0.012892999977339059
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 571,
+        "errors": 0,
+        "rps": 71.316,
+        "p50_ms": 12.893,
+        "p95_ms": 19.601,
+        "p99_ms": 30.667
+      },
+      "median_s": 0.012892999977339059,
+      "min_s": 0.012892999977339059,
+      "max_s": 0.012892999977339059,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "order detail (silver) \u00b7 8 clients",
+      "params": {
+        "endpoint": "order detail (silver)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.03711119998479262
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 1539,
+        "errors": 0,
+        "rps": 191.095,
+        "p50_ms": 37.111,
+        "p95_ms": 75.219,
+        "p99_ms": 114.268
+      },
+      "median_s": 0.03711119998479262,
+      "min_s": 0.03711119998479262,
+      "max_s": 0.03711119998479262,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "order detail (silver) \u00b7 32 clients",
+      "params": {
+        "endpoint": "order detail (silver)",
+        "clients": 32
+      },
+      "runs": 1,
+      "wall_s": [
+        0.1484022000222467
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 1635,
+        "errors": 0,
+        "rps": 202.99,
+        "p50_ms": 148.402,
+        "p95_ms": 224.268,
+        "p99_ms": 272.0
+      },
+      "median_s": 0.1484022000222467,
+      "min_s": 0.1484022000222467,
+      "max_s": 0.1484022000222467,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    },
+    {
+      "label": "summary revalidated (304) \u00b7 8 clients",
+      "params": {
+        "endpoint": "summary revalidated (304)",
+        "clients": 8
+      },
+      "runs": 1,
+      "wall_s": [
+        0.0023865999828558415
+      ],
+      "peak_rss_mb": [
+        0.0
+      ],
+      "extra": {
+        "requests": 25687,
+        "errors": 0,
+        "rps": 3209.928,
+        "p50_ms": 2.387,
+        "p95_ms": 3.252,
+        "p99_ms": 4.505
+      },
+      "median_s": 0.0023865999828558415,
+      "min_s": 0.0023865999828558415,
+      "max_s": 0.0023865999828558415,
+      "stdev_s": 0.0,
+      "median_peak_rss_mb": 0.0
+    }
+  ]
+}
